@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+  --primary: #123499;       /* Deep Blue */
+  --bg-color: #0d0d0d;      /* Dark Black */
+  --text-color: #ffffff;    /* White */
+  --accent: #ff4949;        /* Bold Red Accent */
+  --border-color: #ffffff;  /* White Borders for Neo-brutalism */
+  
+  --shadow-color: #123499;  /* Colored hard shadow */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Neo-brutalism Utility Classes */
+.brutal-border {
+  border: 3px solid var(--border-color);
+  border-radius: 0; /* Hard edges */
+}
+
+.brutal-shadow {
+  box-shadow: 6px 6px 0px var(--shadow-color);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.brutal-shadow:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+.brutal-shadow-accent {
+  box-shadow: 6px 6px 0px var(--accent);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.brutal-shadow-accent:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px var(--accent);
+}
+
+.brutal-button {
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.brutal-input {
+  background-color: transparent;
+  color: white;
+  padding: 1rem;
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+.brutal-input::placeholder {
+  color: #aaaaaa;
+}
+
+.brutal-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.section {
+  padding: 5rem 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+}
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background-color: var(--bg-color);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
