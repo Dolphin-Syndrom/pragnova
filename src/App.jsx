@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Cloud, Database, Shield, Code2, Blocks } from 'lucide-react';
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import {
   SiPython,
   SiCplusplus,
@@ -216,10 +216,10 @@ function App() {
     return (
       <>
         <nav style={{ padding: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '3px solid var(--border-color)' }}>
-          <a href="/" style={{ fontSize: '2rem', fontWeight: 'bold', letterSpacing: '-1px', color: 'white', textDecoration: 'none' }}>PRAGNOVA.</a>
-          <a href="/" className="brutal-button brutal-border" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', backgroundColor: selectedCourse.theme.text, boxShadow: `6px 6px 0px ${selectedCourse.theme.shadow}` }}>
+          <Link to="/" style={{ fontSize: '2rem', fontWeight: 'bold', letterSpacing: '-1px', color: 'white', textDecoration: 'none' }}>PRAGNOVA.</Link>
+          <Link to="/" className="brutal-button brutal-border" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', backgroundColor: selectedCourse.theme.text, boxShadow: `6px 6px 0px ${selectedCourse.theme.shadow}` }}>
             Back To Home
-          </a>
+          </Link>
         </nav>
 
         <section className="section" style={{ backgroundColor: selectedCourse.theme.bg, minHeight: 'calc(100vh - 96px)' }}>
@@ -391,13 +391,13 @@ function App() {
               const { Icon } = course;
               return (
                 <FadeIn delay={0.1 + index * 0.1} key={course.slug}>
-                  <a href={`/courses/${course.slug}`} className="course-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Link to={`/courses/${course.slug}`} className="course-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className="card brutal-border" style={{ backgroundColor: 'white', color: 'var(--bg-color)', height: '100%', boxShadow: `6px 6px 0px ${course.theme.shadow}` }}>
                       <Icon size={48} color={course.theme.text} />
                       <h3 style={{ marginTop: '1rem', color: course.theme.text }}>{course.name}</h3>
                       <p style={{ fontSize: '1rem', marginBottom: 0, fontWeight: 'bold' }}>{course.summary}</p>
                     </div>
-                  </a>
+                  </Link>
                 </FadeIn>
               );
             })}
