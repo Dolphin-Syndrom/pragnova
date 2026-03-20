@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Cloud, Database, Shield, Code2, Blocks } from 'lucide-react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import {
   SiPython,
   SiCplusplus,
@@ -29,8 +29,22 @@ const FadeIn = ({ children, delay = 0 }) => (
   </MotionDiv>
 );
 
+const NotFoundPage = () => (
+  <section className="section" style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: '2rem' }}>
+    <div className="brutal-border brutal-shadow" style={{ maxWidth: '680px', width: '100%', backgroundColor: '#121212', padding: '2rem' }}>
+      <p style={{ marginBottom: '0.8rem', fontSize: '0.95rem', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--accent)' }}>Error 404</p>
+      <h1 style={{ marginBottom: '1rem', color: 'var(--primary)', WebkitTextStroke: '2px var(--border-color)', textShadow: '4px 4px 0px var(--border-color)' }}>Page Not Found</h1>
+      <p style={{ fontWeight: 'bold', marginBottom: '1.5rem' }}>The page you requested does not exist or the route has moved.</p>
+      <Link to="/" className="brutal-button brutal-border" style={{ textDecoration: 'none' }}>
+        Back To Home
+      </Link>
+    </div>
+  </section>
+);
+
 function App() {
   const { slug } = useParams();
+  const location = useLocation();
 
   const courses = useMemo(() => ([
     {
@@ -208,7 +222,7 @@ function App() {
     const selectedCourse = courses.find((course) => course.slug === slug);
 
     if (!selectedCourse) {
-      return <Navigate to="/" replace />;
+      return <NotFoundPage />;
     }
 
     const { Icon } = selectedCourse;
@@ -298,6 +312,10 @@ function App() {
         </section>
       </>
     );
+  }
+
+  if (location.pathname !== '/') {
+    return <NotFoundPage />;
   }
 
   return (
